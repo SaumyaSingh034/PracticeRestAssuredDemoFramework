@@ -4,11 +4,19 @@ import io.restassured.response.Response;
 import static io.restassured.RestAssured.given;
 
 public class MethodsCheck {
+    public String userId;
 
     public void getMethod(){
       Response response =  given().baseUri("").header("Authorization", "Bearer ")
                 .contentType(ContentType.JSON)
                 .when().get("")
                 .then().statusCode(200).extract().response();
+       userId = response.jsonPath().get("id");
+    }
+
+    public void sendPostRequest(){
+        given().baseUri("")
+                .when().post("/users/"+userId)
+                .then().statusCode(204);
     }
 }
