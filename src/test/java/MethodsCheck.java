@@ -2,6 +2,8 @@ import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 
+import java.util.UUID;
+
 import static io.restassured.RestAssured.given;
 
 public class MethodsCheck {
@@ -56,5 +58,25 @@ public class MethodsCheck {
 
 
         // Read values
+
+    }
+
+    public void createPostCartRequest() {
+        CartRequest request = new CartRequest();
+        request.setCartId(UUID.randomUUID());
+        request.setProductId(UUID.randomUUID());
+        request.setQuantity(3);
+
+        String token = "";
+        Response response1 = given()
+                .baseUri("https://reqres.in")
+                .header("Authorization", "Bearer " + token)
+                .contentType(ContentType.JSON)
+                .body(request).
+                when()
+                .post("/cart/add")
+                .then()
+                .statusCode(200)
+                .extract().response();
     }
 }
