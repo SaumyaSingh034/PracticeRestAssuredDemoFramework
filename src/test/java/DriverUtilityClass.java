@@ -1,3 +1,4 @@
+import io.restassured.response.Response;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -20,7 +21,6 @@ public class DriverUtilityClass {
         return null;
     }
 
-
     public void clickOnAllButtons(){
         WebDriver driver = new ChromeDriver();
        List<WebElement> button =  driver.findElements(By.tagName("button"));
@@ -34,5 +34,14 @@ public class DriverUtilityClass {
                 .queryParam("page", 2)
                 .when().get("/users/{id}")
                 .then().statusCode(200);
+    }
+
+    public void retryLogic(){
+        int retry = 3;
+        while(retry-- > 0){
+            Response res = given().get("");
+            if(res.statusCode() == 200) break;
+
+        }
     }
 }
