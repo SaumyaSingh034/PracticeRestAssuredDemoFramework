@@ -1,13 +1,8 @@
-
 import io.restassured.http.ContentType;
-import io.restassured.mapper.ObjectMapper;
-import io.restassured.mapper.ObjectMapperDeserializationContext;
-import io.restassured.mapper.ObjectMapperSerializationContext;
+import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 
 import static io.restassured.RestAssured.given;
-import io.restassured.path.json.JsonPath;
-import io.restassured.path.json.JsonPath;
 
 public class MethodsCheck {
     public String userId;
@@ -32,22 +27,22 @@ public class MethodsCheck {
     public static void main(String[] args) {
 
         JsonPath jsonPath = new JsonPath(response);
-       // String firstName = jsonPath.getString("accounting[0].firstName");
-       // System.out.println(firstName);
+        // String firstName = jsonPath.getString("accounting[0].firstName");
+        // System.out.println(firstName);
         int size = jsonPath.getInt("accounting.size()");
         System.out.println(size);
-        for(int i=0;i<size;i++){
-            String firstName = jsonPath.getString("accounting["+i+"].firstName");
-            int age = jsonPath.getInt("accounting["+i+"].age");
-            if(firstName.equalsIgnoreCase("John") && age == 23){
-                System.out.println(jsonPath.getString("accounting["+i+"].firstName"));
-                System.out.println(jsonPath.getString("accounting["+i+"].lastName"));
-                System.out.println(jsonPath.getInt("accounting["+i+"].age"));
+        for (int i = 0; i < size; i++) {
+            String firstName = jsonPath.getString("accounting[" + i + "].firstName");
+            int age = jsonPath.getInt("accounting[" + i + "].age");
+            if (firstName.equalsIgnoreCase("John") && age == 23) {
+                System.out.println(jsonPath.getString("accounting[" + i + "].firstName"));
+                System.out.println(jsonPath.getString("accounting[" + i + "].lastName"));
+                System.out.println(jsonPath.getInt("accounting[" + i + "].age"));
             }
-            if( age < 30){
-                System.out.println(jsonPath.getString("accounting["+i+"].firstName"));
-                System.out.println(jsonPath.getString("accounting["+i+"].lastName"));
-                System.out.println(jsonPath.getInt("accounting["+i+"].age"));
+            if (age < 30) {
+                System.out.println(jsonPath.getString("accounting[" + i + "].firstName"));
+                System.out.println(jsonPath.getString("accounting[" + i + "].lastName"));
+                System.out.println(jsonPath.getInt("accounting[" + i + "].age"));
             }
         }
 
@@ -56,10 +51,8 @@ public class MethodsCheck {
 2. users who has age below 30.
 
          */
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.readValues()
-
-
+//        ObjectMapper mapper = new ObjectMapper();
+//        mapper.readValues()
 
 
         // Read values
