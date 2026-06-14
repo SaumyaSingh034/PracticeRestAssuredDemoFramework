@@ -1,10 +1,14 @@
+import io.cucumber.java.sl.In;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 
+import java.util.List;
 import java.util.UUID;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.Matchers.equalTo;
 
 public class MethodsCheck {
     public String userId;
@@ -79,4 +83,19 @@ public class MethodsCheck {
                 .statusCode(200)
                 .extract().response();
     }
+
+    public void junePreparation(){
+        Response response = given().contentType(ContentType.JSON)
+                .body(" ")
+                .when().post("/users")
+                .then().statusCode(200)
+                .header("Content-Type", containsString(""))
+                .body("name", equalTo("Saumya"))
+                .extract()
+                .response();
+
+
+    }
+
+
 }
