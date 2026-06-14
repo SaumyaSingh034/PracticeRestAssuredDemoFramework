@@ -20,7 +20,6 @@ public class TestJune {
             }
            int sumStream = amount.stream().mapToInt(Integer::intValue).sum();
         System.out.println(sumStream);
-
         System.out.println(js.getList("orders").size());
 
     }
